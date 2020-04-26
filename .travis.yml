@@ -15,8 +15,8 @@ after_sucess:
     - docker build -t amitrii/multi-worker ./worker
 
     - echo  "DOCKER_PASSWORD" | docker  login  -u  "DOCKER_ID" --password-stdin
-    - docker push amitrii/multi-client
-    - docker push amitrii/multi-nginx
-    - docker push amitrii/multi-server
-    - docker push amitrii/multi-worker
+    - docker push amitrii/multi-client:latest
+    - docker push amitrii/multi-nginx:latest
+    - docker push amitrii/multi-server:latest
+    - docker push amitrii/multi-worker:latest
 
