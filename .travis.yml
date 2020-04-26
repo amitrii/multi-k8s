@@ -1,0 +1,22 @@
+sudo: required
+services:
+    - docker
+
+before_install:
+    - docker build -t amitrii/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+    - docker run amitrii/react-test npm test -- --coverage
+
+after_sucess:
+    - docker build -t amitrii/multi-client ./client
+    - docker build -t amitrii/multi-nginx ./nginx
+    - docker build -t amitrii/multi-server ./server
+    - docker build -t amitrii/multi-worker ./worker
+
+    - echo  "DOCKER_PASSWORD" | docker  login  -u  "DOCKER_ID" --password-stdin
+    - docker push amitrii/multi-client
+    - docker push amitrii/multi-nginx
+    - docker push amitrii/multi-server
+    - docker push amitrii/multi-worker
+
