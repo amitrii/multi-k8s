@@ -1,5 +1,5 @@
 {
-    "AWSEBDockerrunVersion":2,
+    "AWSEBDockerrunVersion": 2,
     "containerDefinations": [
         {
             "name": "client",
@@ -29,7 +29,7 @@
             "essential": true,
             "portMappings": [
                 {
-                    "hostPort":80,
+                    "hostPort": 80,
                     "containerPort": 80
                 }
             ],
