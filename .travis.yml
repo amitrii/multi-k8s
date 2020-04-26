@@ -6,7 +6,7 @@ before_install:
     - docker build -t amitrii/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-    - docker run amitrii/react-test npm test -- --coverage
+    - docker run -e CI=true amitrii/react-test npm test -- --coverage
 
 after_sucess:
     - docker build -t amitrii/multi-client ./client
